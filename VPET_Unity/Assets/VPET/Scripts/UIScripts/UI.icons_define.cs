@@ -149,6 +149,12 @@ namespace vpet
 	    private Sprite ScoutMode_PathRecord_sel;
 	    private Sprite ScoutMode_Snapshot_nrm;
 	    private Sprite ScoutMode_Snapshot_sel;
-	
-}
+
+		private Sprite ScoutMode_DOF_nrm;
+		private Sprite ScoutMode_DOF_sel;
+		private Sprite ScoutMode_Focus_nrm;
+		private Sprite ScoutMode_Focus_sel;
+		private Sprite ScoutMode_Visualizer_nrm;
+		private Sprite ScoutMode_Visualizer_sel;
+	}
 }

@@ -214,7 +214,6 @@ namespace vpet
 			{
 				print("Fix Me");
 			}
-	
 
 	        // initialize light settings widget
 	        GameObject ciLightSettingsObject = new GameObject("ciLightSettingsObject");
@@ -321,10 +320,15 @@ namespace vpet
 			mainMenuButton.SetActive(false);
 			iMainMenuButton.Menu = mainMenu;
 	
+
+
 	        //call setup function for all available menues
 	        setupMainMenu();
 	        setupSecondaryMenu();
 	        setupCenterMenu();
+
+			// initialize camera slider widget
+			setupCameraSlider();
 	
 		}
 	

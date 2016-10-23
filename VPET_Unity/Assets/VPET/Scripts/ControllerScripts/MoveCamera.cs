@@ -28,6 +28,7 @@ using UnityEngine;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
+using UnityStandardAssets.ImageEffects;
 
 //!
 //! This class provides all functionallities for the principal camera including the real world rotation functionality
@@ -179,6 +180,50 @@ namespace vpet
         private Quaternion rotationFirst = Quaternion.identity;
         private Vector3 positionOffset = Vector3.zero;
         private Vector3 positionFirst = Vector3.zero;
+
+		//! Make certain camera / DOF parameters accessible via setter / getter
+
+		//! set / get aperture (DOF component)
+		public float Aperture // camera aperture (DOF component)
+		{
+			set { this.GetComponent<DepthOfField>().aperture = value; }
+			get { return this.GetComponent<DepthOfField>().aperture; }
+		}
+		
+		//! set / get camera field of view (vertical)
+		public float Fov 
+		{
+			set { this.GetComponent<Camera>().fieldOfView = value; }
+			get { return this.GetComponent<Camera>().fieldOfView; }
+		}
+		
+		//! set / get focal distance (DOF component)
+		public float focDist // focal distance in world space (DOF component) 
+		{
+			set { this.GetComponent<DepthOfField>().focalLength = value; }
+			get { return this.GetComponent<DepthOfField>().focalLength; }
+		}
+		
+		//! set / get focal size (DOF component)
+		public float focSize
+		{
+			set { this.GetComponent<DepthOfField>().focalSize = value; }
+			get { return this.GetComponent<DepthOfField>().focalSize; }
+		}
+		
+		//! set / get focus visualization status (DOF component)
+		public bool visualizeFocus 
+		{
+			set { this.GetComponent<DepthOfField>().visualizeFocus = value; }
+			get { return this.GetComponent<DepthOfField>().visualizeFocus; }
+		}
+		
+		//! set / get status of depth of field component
+		public bool depthOfField
+		{
+			set { this.GetComponent<DepthOfField>().enabled = value; }
+			get { return this.GetComponent<DepthOfField>().enabled; }
+		}
 
 
         void Awake()

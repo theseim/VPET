@@ -46,7 +46,7 @@ namespace vpet
 	    public float Value
 	    {
 	        set { currentValue = value;
-	            text.text = ((int)(currentValue * precision) / precision).ToString();
+				text.text = textPrefix + valueString + textSuffix;
 	            updateSprites();
 	        }
 	    }
@@ -89,10 +89,45 @@ namespace vpet
 	        set { maxValue = value; }
 	    }
 	    
+		private float precision = 100;
+		
+		private bool formatAsInt = false;
+		public bool FormatAsInt
+		{
+			set { formatAsInt = value;  }
+		}
 	
 	    private Text text;
-	
-	    private float precision = 100;
+
+		private string textPrefix = "";
+		
+		public string TextPrefix
+		{
+			set { textPrefix = value; }
+		}
+		
+		private string textSuffix = "";
+		
+		public string TextSuffix
+		{
+			set { textSuffix = value; }
+		}
+
+		//! returns value as formatted string based on float / int preference (isInt)
+		private string valueString
+		{
+			get
+			{ 
+				if (formatAsInt)
+				{
+					return ((int)Mathf.Floor(currentValue)).ToString("F0");
+				}
+				else
+				{
+					return ((int)(currentValue * precision) / precision).ToString("F2");
+				}
+			}
+		}
 	
 	
 	    void Awake()
@@ -145,8 +180,7 @@ namespace vpet
 	
 	            if ( Mathf.Abs(velocity) < 0.01f ) velocity = 0f;
 	
-	            text.text = ((int)(currentValue*precision)/precision).ToString();
-	
+				text.text = textPrefix + valueString + textSuffix;
 	
 	            updateSprites();
 	
